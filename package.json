@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material/top-app-bar": "^10.0.0",
     "mongodb": "^3.6.5",
     "mongoose": "^5.12.2",
     "next": "10.0.9",
