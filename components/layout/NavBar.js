@@ -4,7 +4,7 @@ import LinkButton from '../UI/LinkButton'
 
 const NavBar = () => {
   return (
-   <AppBar>
+   <AppBar position="static" color="primary">
      <Toolbar>
       <LinkButton name={"ButtonTest"} location={"/"}/>
      </Toolbar>
