@@ -106,12 +106,39 @@ const DUMMY_GROUPS = [
 	},
 ];
 
+const CONTRIBUTORS = [
+	{
+		name: 'CJ. Leverett',
+		link: 'https://cjleverett.me'
+	},
+	{
+		name: 'Tyler Jones',
+		link: 'https://www.devtylerjones.com/'
+	},
+	{
+		name: 'Samantha Aleman',
+		link: 'https://www.linkedin.com/in/samantha-aleman-b83306b5/'
+	},
+	{
+		name: 'Umberto Palazzo',
+		link: 'https://www.linkedin.com/in/umberto-palazzo-93a86ba3/'
+	},
+	{
+		name: 'Riley Slayden',
+		link: 'https://www.rileyslayden.com/'
+	}
+]
+
 export const getFeaturedgroups = () => {
   return DUMMY_GROUPS.filter((group) => group.isFeatured);
 }
 
 const getAllgroups = () => {
   return DUMMY_GROUPS;
+}
+
+export const getAllContributors = () => {
+	return CONTRIBUTORS
 }
 
 export const getgroupById = (id) => {
