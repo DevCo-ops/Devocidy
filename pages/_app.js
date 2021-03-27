@@ -4,7 +4,14 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../components/MUI/theme';
-import NavBar from '../components/layout/NavBar'
+import Layout from '../components/layout/Layout'
+import {makeStyles} from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) => ({
+  content: {
+    // still tryign to git the Header 
+  }
+}))
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -26,8 +33,9 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <NavBar />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </Fragment>
   );

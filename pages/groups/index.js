@@ -8,6 +8,67 @@ const GroupPage = () => {
         <li>Group 1</li>
         <li>Group 2</li>
         <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
+        <li>Group 3</li>
       </ul>
       {/* This will be for Displaying a list of groups */}
     </Fragment>
