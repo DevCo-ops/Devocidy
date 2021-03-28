@@ -8,10 +8,10 @@ const Contributors = () => {
   const contributors = getAllContributors()
   return (
     <Fragment>
-      <Typography variant="h5">Contributors</Typography>
+      <Typography variant="h6" component="bold">Contributors</Typography>
       {contributors.map(contributor => 
-        <Box component="span" m={2}>
-          <Typography variant="h6">{contributor.name}</Typography>
+        <Box component="span" m={0} id={contributor._id}>
+          <Typography component="p">{contributor.name}</Typography>
           <Link href={contributor.link}>see more...</Link>
         </Box>
       )}      
