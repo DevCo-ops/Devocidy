@@ -108,32 +108,39 @@ const DUMMY_GROUPS = [
 
 const CONTRIBUTORS = [
 	{
+		_id: 'con001',
 		name: 'CJ. Leverett',
 		link: 'https://cjleverett.me'
 	},
 	{
+		_id: 'con002',
 		name: 'Tyler Jones',
 		link: 'https://www.devtylerjones.com/'
 	},
 	{
+		_id: 'con003',
 		name: 'Samantha Aleman',
 		link: 'https://www.linkedin.com/in/samantha-aleman-b83306b5/'
 	},
 	{
+		_id: 'con004',
 		name: 'Umberto Palazzo',
 		link: 'https://www.linkedin.com/in/umberto-palazzo-93a86ba3/'
 	},
 	{
+		_id: 'con005',
 		name: 'Riley Slayden',
 		link: 'https://www.rileyslayden.com/'
 	}
 ]
 
-export const getFeaturedgroups = () => {
+const log = 'images/LOGO.jpg'
+
+export const getFeaturedGroups = () => {
   return DUMMY_GROUPS.filter((group) => group.isFeatured);
 }
 
-const getAllgroups = () => {
+const getAllGroups = () => {
   return DUMMY_GROUPS;
 }
 
@@ -141,8 +148,12 @@ export const getAllContributors = () => {
 	return CONTRIBUTORS
 }
 
-export const getgroupById = (id) => {
+export const getGroupById = (id) => {
   return DUMMY_GROUPS.find((group) => group.id === id);
 }
 
-export default getAllgroups
+export const Logo = () => {
+	return logo
+}
+
+export default getAllGroups
