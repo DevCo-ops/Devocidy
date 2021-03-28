@@ -6,7 +6,7 @@ import Copyright from './Copyright';
 const useStyles = makeStyles((theme) => ({
 	footer : {
 		backgroundColor : theme.palette.primary.dark,
-		padding         : theme.spacing(6, 0),
+    padding: theme.spacing(2, 0)
 	},
   children: {
     color: theme.palette.common.white
@@ -15,13 +15,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Footer = (props) => {
 	const classes = useStyles();
-  const {description, children} = props
+  const {children} = props
 	return (
     <footer className={classes.footer}>
       <Container>
-        <Typography>
-          {description}
-        </Typography>
         <Typography className={classes.children}>
           {children}
         </Typography>
