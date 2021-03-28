@@ -1,17 +1,10 @@
 import React, {Fragment} from 'react';
+import { ThemeProvider } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../components/MUI/theme';
 import Layout from '../components/layout/Layout'
-import {makeStyles} from '@material-ui/core/styles'
-
-const useStyles = makeStyles((theme) => ({
-  content: {
-    // still tryign to git the Header 
-  }
-}))
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
