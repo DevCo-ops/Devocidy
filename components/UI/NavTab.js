@@ -1,26 +1,35 @@
-import React from 'react'
-import { Fragment } from 'react'
-import Button from '@material-ui/core/Button'
-import Tab from '@material-ui/core/Tab'
-import Link from 'next/link'
-import { makeStyles } from '@material-ui/core/styles'
+import { Fragment } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { useRouter } from 'next/router';
+import Tab from '@material-ui/core/Tab';
+import Smooth from './Smooth';
+import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
-  button: {
-    color: theme.palette.primary
-  }
-}))
+	tab : {
+		color  : theme.palette.primary,
+		height : 70,
+	},
+}));
 
 const NavTab = (props) => {
-  const classes = useStyles()
-  const {name, location} = props
-  return (
-    <Fragment>
-        <Link href={location}>
-          <Tab variant="outlined" label={name} className={classes.button} />
-        </Link>
-    </Fragment>
-  )
-}
+	const classes = useStyles();
+	const router = useRouter();
+	const { name, pathname, bool } = props;
+	return (
+		<Fragment>
+			<Smooth style={router.pathname === pathname}>
+				<Link href={pathname}>
+					<Tab
+						variant='outlined'
+						label={name}
+						className={classes.tab}
+						disabled={bool}
+					/>
+				</Link>
+			</Smooth>
+		</Fragment>
+	);
+};
 
-export default NavTab
+export default NavTab;
