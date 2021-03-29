@@ -5,6 +5,7 @@ import Head from 'next/head';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../components/MUI/theme';
 import Layout from '../components/layout/Layout'
+import {wrapper} from '../store/index'
 
 function MyApp(props) {
   const { Component, pageProps } = props;
