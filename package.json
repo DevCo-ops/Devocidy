@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "bcrypt": "^5.0.1",
     "mongodb": "^3.6.5",
     "mongoose": "^5.12.2",
