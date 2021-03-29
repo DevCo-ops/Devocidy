@@ -1,17 +1,15 @@
 import {Fragment} from 'react'
+import GroupList from '../../components/Goups/group-list'
+import getAllGroups from '../../dummy';
 
-const GroupPage = () => {
+const GroupListPage = () => {
+  const groups = getAllGroups()
   return (
     <Fragment>
       <h1>Groups</h1>
-      <ul>
-        <li>Group 1</li>
-        <li>Group 2</li>
-        <li>Group 3</li>
-      </ul>
-      {/* This will be for Displaying a list of groups */}
+        <GroupList groups={groups}/>
     </Fragment>
   )
 }
 
-export default GroupPage
+export default GroupListPage

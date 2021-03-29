@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NavBar from '../components/layout'
+import NavBar from './layout/NavBar'
 
 test('navagation component exists', () => {
   render(<NavBar />)
-  const item = screen.getByText(/devocidy/i)
-  expect(item).toBe('devocidy')
+  const item = screen.getByRole('button', {name: /Home/i})
+  expect(item).toBeInTheDocument()
 })
