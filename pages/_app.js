@@ -5,7 +5,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../components/MUI/theme";
 import NavBar from "../components/layout/NavBar";
-import { wrapper } from "../components/store";
+import { wrapper } from "../components/store/index";
 
 function MyApp(props) {
   const { Component, pageProps } = props;
