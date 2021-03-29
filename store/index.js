@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import thunkMiddleware from "redux-thunk";
 import user from "./users/reducer";
@@ -11,7 +11,7 @@ const useMiddleware = (middleware) => {
   return applyMiddleware(...middleware);
 };
 
-const rootReducer = combinedReducer({
+const combinedReducer = combineReducers({
   user,
 });
 
