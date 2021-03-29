@@ -1,14 +1,19 @@
 import {Fragment} from 'react'
+import {useRouter} from 'next/router'
+import Image from 'next/image'
+import {getGroupById} from '../../dummy'
 
-const Group = () => {
+const GroupPage = () => {
+  const router = useRouter()
+  const group = getGroupById(router.query.groupId)
   return (
-    <Fragment>
-      <h1>Devocidy Team</h1>
-      {/* This page will be the location a user will be directed to after clicking link to a
-      a particular grooup
+    <div>
+      <Image src={group.img} width={100} height={100}/>
+      {/* This will be the nested route for a group page
+          Still decideing if it should be nested or not
       */}
-    </Fragment>
+    </div>
   )
 }
 
-export default Group
+export default GroupPage
