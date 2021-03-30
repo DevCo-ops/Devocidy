@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Group from './group';
+import GroupCard from './group-card';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const GroupList = ({groups}) => {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			{groups.map((group) => <Group id={group._id} group={group} /> )}
+			{groups.map((group) => <GroupCard id={group._id} group={group} /> )}
 		</div>
 	);
 };

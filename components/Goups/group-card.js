@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Group = (props) => {
+const GroupCard = (props) => {
 	const classes = useStyles();
 	const { _id, name, img, projectDescription} = props.group;
 	console.log(_id)
@@ -34,4 +34,4 @@ const Group = (props) => {
 	);
 };
 
-export default Group;
+export default GroupCard;
