@@ -4,7 +4,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const GroupHead = ({ _id, name }) => {
+const GroupHead = (props) => {
 	return (
 		<React.Fragment>
 			<CardHeader
@@ -13,7 +13,15 @@ const GroupHead = ({ _id, name }) => {
 						<MoreVertIcon />
 					</IconButton>
 				}
-				title={<Link href={`groups/${_id}`}>{name}</Link>}
+				title={
+					<Link
+						href={{
+							pathname: `groups/[id]`,
+							query: { id: props._id },
+						}}>
+						{props.name}
+					</Link>
+				}
 			/>
 		</React.Fragment>
 	);
