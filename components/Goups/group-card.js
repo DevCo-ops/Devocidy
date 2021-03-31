@@ -21,12 +21,11 @@ const useStyles = makeStyles((theme) => ({
 
 const GroupCard = (props) => {
 	const classes = useStyles();
-	const { _id, name, img, projectDescription} = props.group;
-	console.log(_id)
+	const { _id, name, img, projectDescription } = props.group;
 	return (
 		<React.Fragment>
 			<Card _id={_id} className={classes.main}>
-				<GroupHead name={name} _id={_id}/>
+				<GroupHead name={name} _id={_id} />
 				<GroupMedia img={img} styles={classes.media} />
 				<GroupDescription description={projectDescription} />
 			</Card>
