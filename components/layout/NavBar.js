@@ -7,7 +7,7 @@ import LogoLink from '../UI/LogoLink';
 
 const useStyles = makeStyles((theme) => ({
 	main: {
-		backgroundColor: theme.palette.primary.light,
+		backgroundColor: theme.palette.primary.dark,
 		display: 'flex',
 		flexDirection: 'column',
 		position: 'fixed',
@@ -18,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
 		paddingLeft: theme.spacing(0),
 	},
   div:{
-    margin: theme.spacing(4)
-  }
+    marginBottom: theme.spacing(9)
+  },
 }));
 
 const NavBar = () => {
