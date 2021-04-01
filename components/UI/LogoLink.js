@@ -13,7 +13,7 @@ const LogoLink = () => {
   const classess = useStyles()
   return (
     <Link href="/">
-        <Image className={classess.img} src='/images/devocidyLogo.jpg' height={0} width={200} />
+        <Image className={classess.img} src='/images/IMGLINK2.jpg' height={0} width={200} />
     </Link>
   )
 }

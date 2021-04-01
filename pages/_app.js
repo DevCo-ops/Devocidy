@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../components/MUI/theme';
-import Layout from '../components/layout/Layout'
+import Layout from '../Containers/Layout'
 import {wrapper} from '../store/index'
 
 function MyApp(props) {
