@@ -9,13 +9,11 @@ const useStyles = makeStyles((theme) => ({
 	main: {
 		backgroundColor: theme.palette.primary.dark,
 		display: 'flex',
-		flexDirection: 'column',
 		position: 'fixed',
 	},
 	tabs: {
 		flex: 1,
 		bottom: 0,
-		paddingLeft: theme.spacing(0),
 	},
   div:{
     marginBottom: theme.spacing(9)
@@ -28,7 +26,6 @@ const NavBar = () => {
 		<Fragment>
 			<AppBar position='static' color='primary' className={classes.main}>
 				<Tabs className={classes.tabs}>
-					<NavTab name={''} pathname='' bool={true} />
 					<LogoLink />
 					<NavTab name={'Groups'} pathname={'/groups'} bool={false} />
 				</Tabs>
