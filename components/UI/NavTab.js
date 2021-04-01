@@ -6,9 +6,11 @@ import Smooth from './Smooth';
 import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
-	tab : {
-		color  : theme.palette.primary,
-		height : 70,
+	tab: {
+		color: theme.palette.primary.light,
+		fontSize: 20,
+		height: 70,
+		
 	},
 }));
 
@@ -19,14 +21,18 @@ const NavTab = (props) => {
 	return (
 		<Fragment>
 			<Smooth style={router.pathname === pathname}>
-				<Link href={pathname}>
-					<Tab
-						variant='outlined'
-						label={name}
-						className={classes.tab}
-						disabled={bool}
-					/>
-				</Link>
+				<a>
+					<Link href={pathname}>
+						<Tab
+							variant='outlined'
+							size="sm"
+							label={name}
+							className={classes.tab}
+							disabled={bool}
+							value={100}
+						/>
+					</Link>
+				</a>
 			</Smooth>
 		</Fragment>
 	);
