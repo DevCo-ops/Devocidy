@@ -16,9 +16,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Group = ({id}) => {
+const Group = ({group}) => {
 	const classes = useStyles();
-	const group = getGroupById(id)
 	return (
 		<div className={classes.div}>
 			<GroupHead props={group} />
