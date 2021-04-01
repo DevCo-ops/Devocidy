@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 137vh;
+}
+
+.main {
+  flex: 1;
+}
+
+.footer {
+  padding: 18px;
+}
+
+.logo {
+  padding-left: 100px;
+}
