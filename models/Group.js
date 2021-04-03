@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const GroupSchema = new mongoose.Schema(
   {
@@ -8,24 +8,24 @@ const GroupSchema = new mongoose.Schema(
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     users: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: 'User',
       },
     ],
     image: {
       type: String,
-      default: "",
+      default: '',
     },
     projectDescription: {
       type: String,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export default mongoose.models.Group || mongoose.model("Group", GroupSchema);
+export default mongoose.models.Group || mongoose.model('Group', GroupSchema);
