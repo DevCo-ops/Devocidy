@@ -13,42 +13,45 @@ export default async function handler(req, res) {
 
   switch (method) {
     case "GET":
-      await Group.aggregate(
-        [
-          { $match: { _id: mongoose.Types.ObjectId(id) } },
-          {
-            $lookup: {
-              from: "users",
-              localField: "users",
-              foreignField: "_id",
-              as: "users",
-            },
+      Group.aggregate([
+        { $match: { _id: mongoose.Types.ObjectId(id) } },
+        {
+          $lookup: {
+            from: "users",
+            localField: "users",
+            foreignField: "_id",
+            as: "users",
           },
-          {
-            $lookup: {
-              from: "users",
-              localField: "owner",
-              foreignField: "_id",
-              as: "owner",
-            },
+        },
+        {
+          $lookup: {
+            from: "users",
+            localField: "owner",
+            foreignField: "_id",
+            as: "owner",
           },
-          { $unwind: "$owner" },
-        ],
-        (err, group) => {
-          if (err)
-            res.status(500).json({
-              err,
-              message: "server could not find group by id",
-            });
+        },
+        { $unwind: "$owner" },
+      ])
+        .then((group) => {
           res.status(200).json(group);
-        }
-      );
+        })
+        .catch((err) => {
+          res
+            .status(500)
+            .json({ err, message: "server unable to aggregate properly" });
+        });
       break;
 
     case "PUT":
-      await Group.findByIdAndUpdate(
+      Group.findByIdAndUpdate(
         id,
-        body,
+        {
+          name: body.name,
+          owner: [body.ownerId],
+          image: body.image,
+          projectDescription: body.projectDescription,
+        },
         { new: true, runValidators: true },
         (err, group) => {
           if (err)
@@ -56,9 +59,19 @@ export default async function handler(req, res) {
               err,
               message: "server could not find group by id",
             });
-          res.status(200).json(group);
+          return group;
         }
       );
+      group.users.push(body.userId);
+      group.save({}, (err, group) => {
+        if (err)
+          res.status(500).json({
+            err,
+            message: "server could not update users",
+          });
+        res.status(200).json(group);
+      });
+
       break;
 
     case "DELETE":
