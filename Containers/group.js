@@ -1,7 +1,7 @@
-import GroupImg from '../components/GroupPage/group-img';
+import GroupImg from '@/components/GroupPage/group-img';
 import Grid from '@material-ui/core/Grid';
-import GroupHead from '../components/GroupPage/group-head';
-import GroupBody from '../components/GroupPage/group-body';
+import GroupHead from '@/components/GroupPage/group-head';
+import GroupBody from '@/components/GroupPage/group-body';
 import { getGroupById } from '../dummy';
 import { makeStyles } from '@material-ui/core/styles';
 

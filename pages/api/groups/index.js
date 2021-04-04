@@ -1,26 +1,26 @@
-import dbConnect from "../../../util/dbConnect";
+import dbConnect from '@/utils/dbConnect';
 
 export default async (req, res) => {
   const db = await dbConnect();
-  if (req.method === "GET") {
-    db.collection("groups", (err, col) =>
+  if (req.method === 'GET') {
+    db.collection('groups', (err, col) =>
       col
         .aggregate([
           {
             $lookup: {
-              from: "users",
-              localField: "users",
-              foreignField: "_id",
-              as: "users",
+              from: 'users',
+              localField: 'users',
+              foreignField: '_id',
+              as: 'users',
             },
           },
-          { $unwind: "$users" },
+          { $unwind: '$users' },
           {
             $lookup: {
-              from: "users",
-              localField: "owner",
-              foreignField: "_id",
-              as: "owner",
+              from: 'users',
+              localField: 'owner',
+              foreignField: '_id',
+              as: 'owner',
             },
           },
         ])
