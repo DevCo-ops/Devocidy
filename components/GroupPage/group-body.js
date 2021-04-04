@@ -1,11 +1,12 @@
-import React from "react"
+import ContainerBox from '@/UI/ContainerBox'
+import GroupNestedRoutes from './group-nested-routes'
 
 
 const GroupBody = () => {
   return (
-    <React.Fragment>
-      hello
-    </React.Fragment>
+    <ContainerBox>
+      <GroupNestedRoutes />
+    </ContainerBox>
   )
 }
 
