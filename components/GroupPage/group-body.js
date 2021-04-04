@@ -1,11 +1,11 @@
-import React from "react"
+import ContainerBox from '@/UI/ContainerBox'
 
 
 const GroupBody = () => {
   return (
-    <React.Fragment>
-      hello
-    </React.Fragment>
+    <ContainerBox>
+      Hello
+    </ContainerBox>
   )
 }
 
