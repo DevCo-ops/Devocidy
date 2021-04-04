@@ -1,10 +1,11 @@
 import ContainerBox from '@/UI/ContainerBox'
+import GroupNestedRoutes from './group-nested-routes'
 
 
 const GroupBody = () => {
   return (
     <ContainerBox>
-      Hello
+      <GroupNestedRoutes />
     </ContainerBox>
   )
 }
