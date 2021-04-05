@@ -27,6 +27,30 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 
 Look at [Next.js Documention](https://nextjs.org/docs/advanced-features/module-path-aliases) and the `jsconfig.js` file for further instuctions on absolute imports and module path aliases. Please keep this in mind if you need to add imports to make changes.
 
+To add a new alias go to `jsconfig.json`
+```js
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/models/*": ["models/*"],
+      "@/pages/*": ["pages/*"],
+      // ...etc
+      
+      // for example following the format
+      // "@/<folder>/*": ["<path to folder>/*"]
+      // add
+      "@/customButtons/*": ["components/customButtons/*"]
+    }
+  }
+}
+```
+then import
+```js
+import myCustomButton from '@/customButtons/myCustomButton'
+```
+
 ## Any contributions you make will be under the MIT Software License
 
 In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
