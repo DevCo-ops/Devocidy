@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import GroupList from '../../Containers/group-list';
+import GroupList from '@/Containers/group-list';
 import getAllGroups from '../../dummy';
 
 const GroupListPage = () => {

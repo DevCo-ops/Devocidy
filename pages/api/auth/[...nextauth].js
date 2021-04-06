@@ -1,7 +1,7 @@
-import NextAuth from "next-auth";
-import Adapters from "next-auth/adapters";
-import Providers from "next-auth/providers";
-import User, { UserSchema } from "../../../models/User";
+import NextAuth from 'next-auth';
+import Adapters from 'next-auth/adapters';
+import Providers from 'next-auth/providers';
+import User, { UserSchema } from '@/models/User';
 
 export default NextAuth({
   site: process.env.NEXTAUTH_URL,

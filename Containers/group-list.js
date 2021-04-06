@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import GroupCard from '../components/Goups/group-card';
+import GroupCard from '@/components/Goups/group-card';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +17,9 @@ const GroupList = ({ groups }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      {groups.map((group) => <GroupCard key={group._id} group={group} />)}
+      {groups.map((group) => (
+        <GroupCard key={group._id} group={group} />
+      ))}
     </div>
   );
 };

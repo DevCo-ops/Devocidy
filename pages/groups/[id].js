@@ -1,7 +1,7 @@
-import Group from '../../Containers/group';
+import Group from '@/Containers/group';
 import { useRouter } from 'next/router';
 import { getGroupById } from '../../dummy';
-import Progress from '../../components/UI/progress';
+import Progress from '@/components/UI/progress';
 
 const GroupPage = () => {
   const router = useRouter();

@@ -1,30 +1,30 @@
-import dbConnect from "../../../utils/dbConnect";
-import mongoose from "mongoose";
-import Group from "../../../models/Group";
+import dbConnect from '@/utils/dbConnect';
+import mongoose from 'mongoose';
+import Group from '@/models/Group';
 
 export default async (req, res) => {
   const { method, body } = req;
   await dbConnect();
   switch (method) {
-    case "GET":
+    case 'GET':
       Group.aggregate([
         {
           $lookup: {
-            from: "users",
-            localField: "users",
-            foreignField: "_id",
-            as: "users",
+            from: 'users',
+            localField: 'users',
+            foreignField: '_id',
+            as: 'users',
           },
         },
         {
           $lookup: {
-            from: "users",
-            localField: "owner",
-            foreignField: "_id",
-            as: "owner",
+            from: 'users',
+            localField: 'owner',
+            foreignField: '_id',
+            as: 'owner',
           },
         },
-        { $unwind: "$owner" },
+        { $unwind: '$owner' },
       ])
         .then((group) => {
           res.status(200).json(group);
@@ -32,10 +32,10 @@ export default async (req, res) => {
         .catch((err) => {
           res
             .status(500)
-            .json({ err, message: "server unable to aggregate properly" });
+            .json({ err, message: 'server unable to aggregate properly' });
         });
       break;
-    case "POST":
+    case 'POST':
       let newGroup = await new Group({
         name: body.name,
         owner: [body.ownerId],
@@ -48,21 +48,21 @@ export default async (req, res) => {
         { $match: { _id: mongoose.Types.ObjectId(newGroup._id) } },
         {
           $lookup: {
-            from: "users",
-            localField: "users",
-            foreignField: "_id",
-            as: "users",
+            from: 'users',
+            localField: 'users',
+            foreignField: '_id',
+            as: 'users',
           },
         },
         {
           $lookup: {
-            from: "users",
-            localField: "owner",
-            foreignField: "_id",
-            as: "owner",
+            from: 'users',
+            localField: 'owner',
+            foreignField: '_id',
+            as: 'owner',
           },
         },
-        { $unwind: "$owner" },
+        { $unwind: '$owner' },
       ])
         .then((group) => {
           res.status(200).json(group);
@@ -70,7 +70,7 @@ export default async (req, res) => {
         .catch((err) => {
           res
             .status(500)
-            .json({ err, message: "server unable to aggregate properly" });
+            .json({ err, message: 'server unable to aggregate properly' });
         });
       break;
     default:
