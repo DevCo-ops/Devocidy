@@ -26,6 +26,3 @@ This is a custom component design mainly for navbars or nested navigation it acc
 if a page renders twice you can use this while were still in development and don't have a wrapper. it will put a simple loading screen while page fetches data.
 #### `<Smooth>`
 smooth is only used for navTab and you'll probs never need to use it so don't worry about that to much.
-
-## Contributors
-- French Pudding (testing 1, 2, 3)

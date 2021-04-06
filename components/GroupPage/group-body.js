@@ -1,14 +1,11 @@
-import ContainerBox from '@/UI/ContainerBox'
-import GroupNestedRoutes from './group-nested-routes'
+import React from "react"
 
 
-const GroupBody = (props) => {
-  const {children, id} = props
+const GroupBody = () => {
   return (
-    <ContainerBox>
-      <GroupNestedRoutes id={id} />
-      {children}
-    </ContainerBox>
+    <React.Fragment>
+      hello
+    </React.Fragment>
   )
 }
 
