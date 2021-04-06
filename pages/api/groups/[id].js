@@ -1,6 +1,6 @@
-import dbConnect from "../../../utils/dbConnect";
-import mongoose from "mongoose";
-import Group from "../../../models/Group";
+import dbConnect from '@/utils/dbConnect';
+import mongoose from 'mongoose';
+import Group from '@/models/Group';
 
 export default async function handler(req, res) {
   const {
@@ -12,26 +12,26 @@ export default async function handler(req, res) {
   await dbConnect();
 
   switch (method) {
-    case "GET":
+    case 'GET':
       Group.aggregate([
         { $match: { _id: mongoose.Types.ObjectId(id) } },
         {
           $lookup: {
-            from: "users",
-            localField: "users",
-            foreignField: "_id",
-            as: "users",
+            from: 'users',
+            localField: 'users',
+            foreignField: '_id',
+            as: 'users',
           },
         },
         {
           $lookup: {
-            from: "users",
-            localField: "owner",
-            foreignField: "_id",
-            as: "owner",
+            from: 'users',
+            localField: 'owner',
+            foreignField: '_id',
+            as: 'owner',
           },
         },
-        { $unwind: "$owner" },
+        { $unwind: '$owner' },
       ])
         .then((group) => {
           res.status(200).json(group);
@@ -39,11 +39,11 @@ export default async function handler(req, res) {
         .catch((err) => {
           res
             .status(500)
-            .json({ err, message: "server unable to aggregate properly" });
+            .json({ err, message: 'server unable to aggregate properly' });
         });
       break;
 
-    case "PUT":
+    case 'PUT':
       Group.findByIdAndUpdate(
         id,
         {
@@ -57,7 +57,7 @@ export default async function handler(req, res) {
           if (err)
             res.status(500).json({
               err,
-              message: "server could not find group by id",
+              message: 'server could not find group by id',
             });
           return group;
         }
@@ -67,19 +67,19 @@ export default async function handler(req, res) {
         if (err)
           res.status(500).json({
             err,
-            message: "server could not update users",
+            message: 'server could not update users',
           });
         res.status(200).json(group);
       });
 
       break;
 
-    case "DELETE":
+    case 'DELETE':
       const group = await Group.deleteOne({ _id: id });
       if (!group)
         res
           .status(500)
-          .json({ message: "server was unable to find or delete the group" });
+          .json({ message: 'server was unable to find or delete the group' });
       res.status(200).json({ success: true, group });
       break;
 

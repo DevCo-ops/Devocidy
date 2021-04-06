@@ -1,6 +1,6 @@
-import dbConnect from '@utils/dbConnect';
+import dbConnect from '@/utils/dbConnect';
 import mongoose from 'mongoose';
-import Group from '@models/Group';
+import Group from '@/models/Group';
 
 export default async (req, res) => {
   const { method, body } = req;
