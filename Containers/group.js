@@ -1,5 +1,5 @@
-import GroupHead from '../components/GroupPage/group-head';
-import GroupBody from '../components/GroupPage/group-body';
+import GroupHead from '@/components/GroupPage/group-head';
+import GroupBody from '@/components/GroupPage/group-body';
 import Content from '@/components/GroupSlugs/content';
 import { useRouter } from 'next/router';
 import { getGroupById } from '../dummy';

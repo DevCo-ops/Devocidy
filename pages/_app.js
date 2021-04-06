@@ -3,11 +3,11 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from '../components/MUI/theme';
-import Layout from '../Containers/Layout';
-import { wrapper } from '../store/index';
+import theme from '@/components/MUI/theme';
+import Layout from '@/Containers/Layout';
+import { wrapper } from '@/store/index';
 
-function MyApp (props) {
+function MyApp(props) {
   const { Component, pageProps } = props;
 
   React.useEffect(() => {

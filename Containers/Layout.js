@@ -1,7 +1,7 @@
-import NavBar from '../components/layout/NavBar';
-import Footer from '../components/layout/Footer';
-import Contributors from '../components/layout/Contributors';
-import styles from '../styles/app.module.css';
+import NavBar from '@/components/layout/NavBar';
+import Footer from '@/components/layout/Footer';
+import Contributors from '@/components/layout/Contributors';
+import styles from '@/styles/app.module.css';
 
 const Layout = (props) => {
   const { children } = props;
