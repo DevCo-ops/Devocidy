@@ -1,5 +1,8 @@
 import GroupHead from '../components/GroupPage/group-head';
 import GroupBody from '../components/GroupPage/group-body';
+import Content from '@/components/GroupSlugs/content';
+import { useRouter } from 'next/router';
+import { getGroupById } from '../dummy';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -12,16 +15,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Group = ({ group }) => {
+const Group = ({ children }) => {
+  const router = useRouter();
+  const group = getGroupById(router.query.id);
   const classes = useStyles();
-  return (
-    <div className={classes.div}>
-      <GroupHead props={group} />
-      <div>
-        <GroupBody />
+  if (group) {
+    return (
+      <div className={classes.div}>
+        <GroupHead props={group} />
+        <div>
+          <GroupBody id={group._id}>
+            <Content />
+            {children}
+          </GroupBody>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <h1>Loading..</h1>;
+  }
 };
 
 export default Group;

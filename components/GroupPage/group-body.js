@@ -2,10 +2,12 @@ import ContainerBox from '@/UI/ContainerBox'
 import GroupNestedRoutes from './group-nested-routes'
 
 
-const GroupBody = () => {
+const GroupBody = (props) => {
+  const {children, id} = props
   return (
     <ContainerBox>
-      <GroupNestedRoutes />
+      <GroupNestedRoutes id={id} />
+      {children}
     </ContainerBox>
   )
 }

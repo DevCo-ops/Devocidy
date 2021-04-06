@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const GroupNestRoutes = () => {
+const GroupNestRoutes = ({id}) => {
   const classes = useStyles()
   return (
     <Fragment>
@@ -23,9 +23,9 @@ const GroupNestRoutes = () => {
       <Tabs
       variant="fullWidth"
       >
-        <NavTab name={'About'} pathname={'/groups/[id]/'} bool={false} />
-        <NavTab name={'Console'} pathname={'/groups/[id]/console'} bool={false} />
-        <NavTab name={'users'} pathname={'/groups/[id]/users'} bool={false} />
+        <NavTab name={'About'} pathname={`/groups/${id}/`} bool={false} />
+        <NavTab name={'Console'} pathname={`/groups/${id}/console`} bool={false} />
+        <NavTab name={'users'} pathname={`/groups/${id}/users`} bool={false} />
       </Tabs>
     </AppBar>
   </Fragment>
