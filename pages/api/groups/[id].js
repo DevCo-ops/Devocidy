@@ -49,7 +49,7 @@ export default async function handler(req, res) {
         {
           name: body.name,
           owner: [body.ownerId],
-          image: body.image,
+          image: body.img,
           projectDescription: body.projectDescription,
         },
         { new: true, runValidators: true },

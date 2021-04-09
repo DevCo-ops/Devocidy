@@ -17,7 +17,7 @@ const GroupSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
-    image: {
+    img: {
       type: String,
       default: '',
     },
@@ -25,7 +25,7 @@ const GroupSchema = new mongoose.Schema(
       type: String,
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 export default mongoose.models.Group || mongoose.model('Group', GroupSchema);
