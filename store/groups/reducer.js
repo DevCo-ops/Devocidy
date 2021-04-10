@@ -1,20 +1,21 @@
-import { groupActionsTypes } from "./actions";
+import { groupActionsTypes } from './actions';
 
 const initialState = {
-  groups: {},
+  groups: [],
 };
 
-export default function reducer(state = initialState, action) {
+export default async function reducer(state = initialState, action) {
   switch (action.type) {
     case groupActionsTypes.ALL:
-      fetch("../../pages/api/groups").then((groupData) => {
-        return { ...state, groups: groupData };
-      });
+      return { ...state, groups: action.data };
+      break;
 
-    case groupActionsTypes.UPDATE_BY_ID:
-    case groupActionsTypes.UPDATE_BY_EMAIL:
+    case groupActionsTypes.UPDATE:
+      return { ...state, groups: { ...state.groups, group } };
+      break;
+
     case groupActionsTypes.FIND_BY_ID:
-    case groupActionsTypes.FIND_BY_EMAIL:
+      break;
 
     default:
       return state;

@@ -15,7 +15,6 @@
     "mongoose": "^5.12.2",
     "next": "10.0.9",
     "next-auth": "^3.13.3",
-    "next-redux-wrapper": "^6.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-redux": "^7.2.3",

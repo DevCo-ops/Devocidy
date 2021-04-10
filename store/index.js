@@ -1,40 +1,48 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import { createWrapper, HYDRATE } from "next-redux-wrapper";
-import thunkMiddleware from "redux-thunk";
-import user from "./users/reducer";
-import group from "./groups/reducer";
+import { useMemo } from 'react';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
+import users from './users/reducer';
+import groups from './groups/reducer';
 
-const useMiddleware = (middleware) => {
-  if (process.env.NODE_ENV !== "production") {
-    const { composeWithDevTools } = require("redux-devtools-extension");
-    return composeWithDevTools(applyMiddleware(...middleware));
-  }
-  return applyMiddleware(...middleware);
-};
+let store;
 
 const combinedReducer = combineReducers({
-  user,
-  group,
+  users,
+  groups,
 });
 
-// create your reducer
-const reducer = (state, action) => {
-  if (action.type === HYDRATE) {
-    const nextState = {
-      ...state, // use previous state
-      ...action.payload, // apply delta from hydration
-    };
-    // *fix me
-    // if (state.count) nextState.count = state.count; // preserve count value on client side navigation
-    return nextState;
-  } else {
-    return combinedReducer(state, action);
+function initStore(initialState) {
+  return createStore(
+    combinedReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
+  );
+}
+
+export const initializeStore = (preloadedState) => {
+  let _store = store ?? initStore(preloadedState);
+
+  // After navigating to a page with an initial Redux state, merge that state
+  // with the current state in the store, and create a new store
+  if (preloadedState && store) {
+    _store = initStore({
+      ...store.getState(),
+      ...preloadedState,
+    });
+    // Reset the current store
+    store = undefined;
   }
+
+  // For SSG and SSR always create a new store
+  if (typeof window === 'undefined') return _store;
+  // Create the store once in the client
+  if (!store) store = _store;
+
+  return _store;
 };
 
-const initStore = () => {
-  return createStore(reducer, useMiddleware([thunkMiddleware]));
-};
-
-// export an assembled wrapper
-export const wrapper = createWrapper(initStore);
+export function useStore(initialState) {
+  const store = useMemo(() => initializeStore(initialState), [initialState]);
+  return store;
+}

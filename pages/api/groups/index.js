@@ -2,20 +2,12 @@ import dbConnect from '@/utils/dbConnect';
 import mongoose from 'mongoose';
 import Group from '@/models/Group';
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   const { method, body } = req;
   await dbConnect();
   switch (method) {
     case 'GET':
       Group.aggregate([
-        {
-          $lookup: {
-            from: 'users',
-            localField: 'users',
-            foreignField: '_id',
-            as: 'users',
-          },
-        },
         {
           $lookup: {
             from: 'users',
@@ -25,6 +17,14 @@ export default async (req, res) => {
           },
         },
         { $unwind: '$owner' },
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'users',
+            foreignField: '_id',
+            as: 'users',
+          },
+        },
       ])
         .then((group) => {
           res.status(200).json(group);
@@ -39,7 +39,7 @@ export default async (req, res) => {
       let newGroup = await new Group({
         name: body.name,
         owner: [body.ownerId],
-        image: body.image,
+        img: body.img,
         projectDescription: body.projectDescription,
       });
       newGroup.users.push(body.ownerId);
@@ -79,4 +79,4 @@ export default async (req, res) => {
       });
       break;
   }
-};
+}

@@ -1,4 +1,4 @@
-import { userActionsTypes } from "./actions";
+import { userActionsTypes } from './actions';
 
 const initialState = {
   users: {},
@@ -6,11 +6,9 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-
     case userActionsTypes.ALL:
-      fetch("../../pages/api/users").then((userData) => {
-        return { ...state, users: userData };
-      });
+      return { ...state, users: userData };
+      break;
 
     case userActionsTypes.UPDATE_BY_ID:
     case userActionsTypes.UPDATE_BY_EMAIL:
