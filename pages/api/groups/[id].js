@@ -80,7 +80,8 @@ export default async function handler(req, res) {
         res
           .status(500)
           .json({ message: 'server was unable to find or delete the group' });
-      res.status(200).json({ success: true, group });
+
+      res.status(200).json({ success: true, id: group._id });
       break;
 
     default:
