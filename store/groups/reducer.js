@@ -7,7 +7,11 @@ const initialState = {
 export default async function reducer(state = initialState, action) {
   switch (action.type) {
     case groupActionsTypes.ALL:
-      return { ...state, groups: action.data };
+      return { ...state, groups: action.groups };
+      break;
+
+    case groupActionsTypes.CREATE:
+      return { ...state, groups: state.groups.concat(action.data) };
       break;
 
     case groupActionsTypes.CREATE:
@@ -16,13 +20,13 @@ export default async function reducer(state = initialState, action) {
 
     case groupActionsTypes.UPDATE:
       let updateIndex = state.groups.findIndex(
-        (group) => group._id === action.data._id
+        (group) => group._id === action.group._id
       );
       return {
         ...state,
         groups: [
           ...state.groups.slice(0, updateIndex),
-          action.data,
+          action.group,
           ...state.groups.slice(updateIndex + 1),
         ],
       };
