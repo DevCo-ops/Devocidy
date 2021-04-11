@@ -24,7 +24,9 @@ export default function reducer(state = initialState, action) {
       };
       break;
 
-    // case userActionsTypes.FIND_BY_ID:
+    case userActionsTypes.FIND_BY_ID:
+      return { ...state, users: state.users.concat(action.user) };
+      break;
 
     case userActionsTypes.DELETE_BY_ID:
       return {

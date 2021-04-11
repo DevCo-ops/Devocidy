@@ -5,8 +5,8 @@ export const userActionsTypes = {
 };
 
 export const getUsers = () => {
-  return async (dispatch) => {
-    await fetch('http://localhost:3000/api/users', {
+  return (dispatch) => {
+    fetch('http://localhost:3000/api/users', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -21,15 +21,15 @@ export const getUsers = () => {
   };
 };
 
-export const updateUser = (data) => {
-  return async (dispatch) => {
-    await fetch(`http://localhost:3000/api/users/${data._id}`, {
+export const updateUser = (user) => {
+  return (dispatch) => {
+    fetch(`http://localhost:3000/api/users/${user._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(user),
     })
       .then((res) => res.json())
       .then((user) => {
@@ -39,8 +39,13 @@ export const updateUser = (data) => {
 };
 
 export const findUserById = (id) => {
-  return async (dispatch) => {
-    await fetch(`http://localhost:3000/api/users/${id}`, {
+  return (dispatch, getState) => {
+    const users = getState().users.users;
+    const user = users.filter((user) => user._id === id);
+
+    if (user) return user;
+
+    fetch(`http://localhost:3000/api/users/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
