@@ -4,7 +4,7 @@ const initialState = {
   groups: [],
 };
 
-export default function reducer(state = initialState, action) {
+export default async function reducer(state = initialState, action) {
   switch (action.type) {
     case groupActionsTypes.ALL:
       return { ...state, groups: action.data };

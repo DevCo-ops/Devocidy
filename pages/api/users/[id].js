@@ -1,4 +1,5 @@
 import dbConnect from '@/utils/dbConnect';
+import User from '@/models/User';
 
 export default async function handler(req, res) {
   const {
@@ -7,20 +8,11 @@ export default async function handler(req, res) {
     body,
   } = req;
 
-  const db = await dbConnect();
-
-  const userCollection = await db.collection('users', (err, col) => {
-    if (err) {
-      res.status(500).json({
-        err,
-        message: 'server could not return the users collection',
-      });
-    } else return col;
-  });
+  await dbConnect();
 
   switch (method) {
     case 'GET':
-      await userCollection.findById(id, (err, user) => {
+      await User.findById(id, (err, user) => {
         if (err)
           res.status(500).json({
             err,
@@ -31,7 +23,7 @@ export default async function handler(req, res) {
       break;
 
     case 'PUT':
-      await userCollection.findByIdAndUpdate(
+      await User.findByIdAndUpdate(
         id,
         body,
         { new: true, runValidators: true },
@@ -47,12 +39,12 @@ export default async function handler(req, res) {
       break;
 
     case 'DELETE':
-      const user = await userCollection.deleteOne({ _id: id });
+      const user = await User.deleteOne({ _id: id });
       if (!user)
         res
           .status(500)
           .json({ message: 'server was unable to find or delete the user' });
-      res.status(200).json({ success: true, user });
+      res.status(200).json({ success: true, id: user._id });
       break;
 
     default:

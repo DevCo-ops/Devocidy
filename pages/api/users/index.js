@@ -1,24 +1,17 @@
 import dbConnect from '@/utils/dbConnect';
+import User from '@/models/User';
 
 export default async (req, res) => {
   const { method } = req;
-  const db = await dbConnect();
+  await dbConnect();
   if (method === 'GET') {
-    db.collection('users', (err, col) => {
+    User.find({}, (err, users) => {
       if (err)
         res.status(500).json({
           err,
-          message: 'server could not return the users collection',
+          message: 'server could not parse collection to an array',
         });
-
-      col.find({}).toArray((err, users) => {
-        if (err)
-          res.status(500).json({
-            err,
-            message: 'server could not parse collection to an array',
-          });
-        res.status(200).json(users);
-      });
+      res.status(200).json(users);
     });
   } else {
     res.status(400).json({
