@@ -6,8 +6,8 @@ export const groupActionsTypes = {
 };
 
 export const getGroups = () => {
-  return async (dispatch) => {
-    await fetch('http://localhost:3000/api/groups', {
+  return (dispatch) => {
+    fetch('http://localhost:3000/api/groups', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -15,61 +15,62 @@ export const getGroups = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: groupActionsTypes.ALL, data });
+      .then((groups) => {
+        dispatch({ type: groupActionsTypes.ALL, groups });
       })
       .catch((err) => console.log('-----------------ERROR:  ', err));
   };
 };
 
-export const createGroup = (data) => {
-  return async (dispatch) => {
+export const createGroup = (group) => {
+  return (dispatch) => {
     fetch('http://localhost:3000/api/groups', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(group),
     })
       .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: groupActionsTypes.CREATE, data });
+      .then((group) => {
+        dispatch({ type: groupActionsTypes.CREATE, group });
       });
   };
 };
 
-export const updateGroup = (data) => {
-  return async (dispatch) => {
-    fetch(`http://localhost:3000/api/groups/${data._id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: groupActionsTypes.UPDATE, data });
-      });
-  };
+export const updateGroup = (group) => (dispatch) => {
+  fetch(`http://localhost:3000/api/groups/${group._id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(group),
+  })
+    .then((res) => res.json())
+    .then((group) => {
+      dispatch({ type: groupActionsTypes.UPDATE, group });
+    });
 };
 
-export const findGroupById = (id) => {
-  return async (dispatch) => {
-    await fetch(`http://localhost:3000/api/groups/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
+export const findGroupById = (id) => (dispatch, getState) => {
+  const groups = getState().groups.groups;
+  const group = groups.filter((group) => group._id === id);
+
+  if (group) return group;
+
+  fetch(`http://localhost:3000/api/groups/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  })
+    .then((res) => res.json())
+    .then((group) => {
+      dispatch({ type: groupActionsTypes.CREATE, group });
     })
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: groupActionsTypes.FIND_BY_ID, data });
-      });
-  };
+    .catch((err) => console.log('-----------------ERROR:  ', err));
 };
 
 export const deleteGroupById = (id) => {
