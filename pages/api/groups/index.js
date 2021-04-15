@@ -36,14 +36,7 @@ export default async function handler(req, res) {
         });
       break;
     case 'POST':
-      let newGroup = await new Group({
-        name: body.name,
-        owner: [body.ownerId],
-        img: body.img,
-        projectDescription: body.projectDescription,
-      });
-      newGroup.users.push(body.ownerId);
-      await newGroup.save();
+      let newGroup = await new Group(body);
       Group.aggregate([
         { $match: { _id: mongoose.Types.ObjectId(newGroup._id) } },
         {

@@ -6,11 +6,11 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case userActionsTypes.ALL:
+    case userActionsTypes.ALL_USERS:
       return { ...state, users: action.users };
       break;
 
-    case userActionsTypes.UPDATE:
+    case userActionsTypes.UPDATE_USER:
       let updateIndex = state.users.findIndex(
         (user) => user._id === action.user._id
       );
@@ -24,11 +24,11 @@ export default function reducer(state = initialState, action) {
       };
       break;
 
-    case userActionsTypes.FIND_BY_ID:
+    case userActionsTypes.FIND_USER_BY_ID:
       return { ...state, users: state.users.concat(action.user) };
       break;
 
-    case userActionsTypes.DELETE_BY_ID:
+    case userActionsTypes.DELETE_USER_BY_ID:
       return {
         ...state,
         users: [...state.users.filter((user) => user._id !== action.id)],

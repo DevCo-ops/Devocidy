@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
     },
-    image: {
+    img: {
       type: String,
     },
     groups: [
