@@ -46,31 +46,17 @@ export default async function handler(req, res) {
     case 'PUT':
       Group.findByIdAndUpdate(
         id,
-        {
-          name: body.name,
-          owner: [body.ownerId],
-          image: body.img,
-          projectDescription: body.projectDescription,
-        },
+        body,
         { new: true, runValidators: true },
         (err, group) => {
           if (err)
             res.status(500).json({
               err,
-              message: 'server could not find group by id',
+              message: 'server could not find/update group by id',
             });
-          return group;
+          res.status(200).json(group);
         }
       );
-      group.users.push(body.userId);
-      group.save({}, (err, group) => {
-        if (err)
-          res.status(500).json({
-            err,
-            message: 'server could not update users',
-          });
-        res.status(200).json(group);
-      });
 
       break;
 
