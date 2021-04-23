@@ -1,7 +1,7 @@
 import dbConnect from '@/utils/dbConnect';
 import User from '@/models/User';
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   const { method } = req;
   await dbConnect();
   if (method === 'GET') {
@@ -18,4 +18,4 @@ export default async (req, res) => {
       message: `${method} Is either not allowed or not a valid request method.`,
     });
   }
-};
+}
